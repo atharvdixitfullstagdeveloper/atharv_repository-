@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* CSS */
+        .main-container {
+            background-color: grey;
+            width: 70vw;
+            margin-left: 20vw;
+            height: 45vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            border-radius: 20px;
+            margin-top: 5px;
+        }
+
+        .input-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .display {
+            background-color: whitesmoke;
+            width: 90%;
+            height: 60%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 22px;
+            margin-top: 45px;
+            padding: 20px;
+            margin-left: 30px;
+        }
+
+        .input-box {
+            height: 44px;
+            width: 80%;
+            font-size: 22px;
+            margin-top: 20px;
+            background-color: rgba(255, 255, 255, 0.701);
+            border: none;
+            border-radius: 20px;
+        }
+
+        .button {
+            width: 80%;
+            margin: 20px;
+            height: 44px;
+            background-color: blue;
+            font-size: 22px;
+            border: none;
+            border-radius: 20px;
+            color: white;
+        }
+
+        /* Loader */
+        .loader {
+            width: 50px;
+            padding: 8px;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            background: gray;
+            --_m:
+                conic-gradient(#0000 10%, #000),
+                linear-gradient(#000 0 0) content-box;
+            -webkit-mask: var(--_m);
+            mask: var(--_m);
+            -webkit-mask-composite: source-out;
+            mask-composite: subtract;
+            animation: l3 1s infinite linear;
+        }
+
+        @keyframes l3 {
+            to {
+                transform: rotate(1turn)
+            }
+        }
+    </style>
+   <script>
+    let coins = 100;
+
+    function startPlay() {
+        document.getElementById("loader").style.display = "block";
+        setTimeout(() => {
+            startLottery();
+        }, 1000);
+    }
+    function startLottery() {
+        document.getElementById("loader").style.display = "none";
+        let output = parseInt((Math.random() * 100) / 10);
+        let betCoins = document.getElementById("coins").value;
+        let betNumber = document.getElementById("input").value;
+        if (betCoins <= 0 || betNumber < 0) {
+            document.getElementById("display-text").innerHTML =
+                "<BR/>Your Coins is " + coins;
+            return;
+        }
+        
+        if (betCoins > coins) {
+            document.getElementById("display-text").innerHTML =
+                "Check Your bet it's more than your coins";
+            return;
+        }
+
+        if (betNumber == output) {
+            coins += betCoins * 9;
+                } else {
+            coins -= betCoins;
+        }
+
+        document.getElementById("display-text").innerHTML =
+            "Lottery Number = " + output + "<BR/>Your Coins is " + coins;
+        document.getElementById("display-text").style.color = "#898121";
+    }
+
+    window.onload = function () {
+        startPlay();
+    }
+</script>
+</head>
+
+<body style="background-color: white; margin: 0px;">
+    <div class="main-container">
+        <div class="display" id="display">
+            <h1 class="display-text" id="display-text"></h1>
+            <div class="loader" id="loader"></div>
+        </div>
+        <div class="input-container">
+            <input id="input" type="number" class="input-box" placeholder="Bet number">
+            <input id="coins" type="number" class="input-box" placeholder="Coins">
+            <button class="button" onclick="startPlay()">Click me</button>
+        </div>
+    </div>
+
+    <script src="your-script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    :root {
+      --green: #A2CCB6;
+      --yellow: #FCEEB5;
+      --peach: #EE786E;
+      --off-white: #FFFFF4;
+    }
+
+    body {
+      background-color: #FFFFFF;
+      margin-top: 50px;
+      font-family: Arial;
+    }
+
+    span {
+      display: block;
+      margin-top: -5px;
+    }
+
+    .keyboard {
+      width: 780px;
+      height: 262px;
+      margin: 0px auto;
+      border: 3px solid #000000;
+      border-radius: 10px;
+      background: #000000;
+      margin-top: 200px;
+    }
+
+    .row {
+      margin-top: 2px;
+      overflow: hidden;
+    }
+
+    .key {
+      width: 50px;
+      height: 50px;
+      float: left;
+      cursor: pointer;
+      background-color: var(--off-white);
+      color: #000000;
+      line-height: 48px;
+      text-align: center;
+      margin-left: 2px;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+      /* Added transition for smooth effect */
+    }
+
+    .key:hover {
+      background-color: #ccc;
+      /* Change to desired hover color */
+    }
+
+    .key__symbols {
+      line-height: 28px;
+    }
+
+    .key__delete {
+      width: 100px;
+    }
+
+    .key__oneandhalf {
+      width: 75px;
+    }
+
+    .key__esc {
+      background: var(--peach);
+    }
+
+    .key__enter {
+      width: 112px;
+    }
+
+    .key__caps {
+      width: 90px;
+    }
+
+    .key__shift-left {
+      width: 100px;
+    }
+
+    .key__spacebar {
+      width: 300px;
+    }
+
+    .key__bottom-funct {
+      width: 70px;
+    }
+
+    .key__arrow {
+      background: var(--green);
+    }
+
+    .feather {
+      margin-top: 10px;
+    }
+
+    #display-box {
+      width: 780px;
+      /* Same width as the keyboard */
+      height: 50px;
+      /* Adjust height as needed */
+      margin: 0 auto;
+      background-color: #f0f0f0;
+      /* Light gray background */
+      border: 1px solid #ccc;
+      /* Gray border */
+      border-radius: 5px;
+      /* Rounded corners */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-family: Arial, sans-serif;
+      padding: 10px;
+      box-sizing: border-box;
+      /* Include padding in width calculation */
+    }
+  </style>
+</head>
+
+<body>
+
+  <head>
+    <script src="https://unpkg.com/feather-icons"></script>
+  </head>
+
+  <body>
+    <div class="keyboard">
+      <div class="row">
+        <div class="key key__esc">esc</div>
+        <div class="key key__symbols">
+          ! <span> 1
+        </div>
+        <div class="key key__symbols">
+          @ <span> 2
+        </div>
+        <div class="key key__symbols">
+          # <span> 3
+        </div>
+        <div class="key key__symbols">
+          $ <span> 4
+        </div>
+        <div class="key key__symbols">
+          % <span> 5
+        </div>
+        <div class="key key__symbols">
+          ^ <span> 6
+        </div>
+        <div class="key key__symbols">
+          & <span> 7
+        </div>
+        <div class="key key__symbols">
+          * <span> 8
+        </div>
+        <div class="key key__symbols">
+          ( <span> 9
+        </div>
+        <div class="key key__symbols">
+          ) <span> 0
+        </div>
+        <div class="key key__symbols">
+          _ <span> -
+        </div>
+        <div class="key key__symbols">
+          + <span> =
+        </div>
+        <div class="key key__delete key__icon">
+          backspace
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="key key__oneandhalf">tab</div>
+        <div class="key">
+          Q
+        </div>
+        <div class="key">
+          W
+        </div>
+        <div class="key">
+          E
+        </div>
+        <div class="key">
+          R
+        </div>
+        <div class="key">
+          T
+        </div>
+        <div class="key">
+          Y
+        </div>
+        <div class="key">
+          U
+        </div>
+        <div class="key">
+          I
+        </div>
+        <div class="key">
+          O
+        </div>
+        <div class="key">
+          P
+        </div>
+        <div class="key key__symbols">
+          { <span> [
+        </div>
+        <div class="key key__symbols">
+          } <span> ]
+        </div>
+        <div class="key key__symbols key__oneandhalf">
+          | <span> \
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="key key__caps">caps lock</div>
+        <div class="key">
+          A
+        </div>
+        <div class="key">
+          S
+        </div>
+        <div class="key">
+          D
+        </div>
+        <div class="key">
+          F
+        </div>
+        <div class="key">
+          G
+        </div>
+        <div class="key">
+          H
+        </div>
+        <div class="key">
+          J
+        </div>
+        <div class="key">
+          K
+        </div>
+        <div class="key">
+          L
+        </div>
+        <div class="key key__symbols">
+          : <span> ;
+        </div>
+        <div class="key key__symbols">
+          " <span> '
+        </div>
+        <div class="key key__enter">
+          enter
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="key key__shift-left">shift</div>
+        <div class="key">
+          Z
+        </div>
+        <div class="key">
+          X
+        </div>
+        <div class="key">
+          C
+        </div>
+        <div class="key">
+          V
+        </div>
+        <div class="key">
+          B
+        </div>
+        <div class="key">
+          N
+        </div>
+        <div class="key">
+          M
+        </div>
+        <div class="key key__symbols">
+          > <span> .
+        </div>
+        <div class="key key__symbols">
+          < <span> .
+        </div>
+        <div class="key key__symbols">
+          ? <span> /
+        </div>
+        <div class="key">
+          home
+        </div>
+        <div class="key key__arrow">
+          ↑
+        </div>
+        <div class="key">
+          end
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="key key__bottom-funct">ctrl</div>
+        <div class="key key__bottom-funct">
+          <img src="./images/wins-removebg-preview.png" height="30px" width="40px" style="margin-top: 8px;">
+        </div>
+        <div class="key key__bottom-funct">
+          alt
+        </div>
+        <div class="key key__spacebar">
+        </div>
+        <div class="key">
+          alt
+        </div>
+        <div class="key">
+          ctrl
+        </div>
+        <div class="key key__arrow">
+          ←
+        </div>
+        <div class="key key__arrow">
+          ↓
+        </div>
+        <div class="key key__arrow">
+          →
+        </div>
+      </div>
+    </div>
+    <div id="display-box"></div> <!-- Display box for typed characters -->
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const displayBox = document.getElementById('display-box');
+        const keys = document.querySelectorAll('.key');
+        let capsLockEnabled = false;
+
+        keys.forEach(key => {
+          key.addEventListener('click', () => {
+            const keyContent = key.textContent.trim();
+            switch (keyContent) {
+              case 'backspace':
+                displayBox.textContent = displayBox.textContent.slice(0, -1);
+                break;
+              case 'tab':
+                displayBox.textContent += '\t'; // Add a tab character
+                break;
+              case 'caps lock':
+                capsLockEnabled = !capsLockEnabled; // Toggle caps lock state
+                break;
+              case 'enter':
+                displayBox.textContent += '\n'; // Add a newline character
+                break;
+              case 'shift':
+                // Handle shift key press
+                break;
+              case 'ctrl':
+                // Handle ctrl key press
+                break;
+              case 'alt':
+                // Handle alt key press
+                break;
+              case 'home':
+                // Handle home key press
+                break;
+              case 'end':
+                // Handle end key press
+                break;
+              case 'spacebar':
+                displayBox.textContent += ' '; // Add a space character
+                break;
+              default:
+                if (capsLockEnabled) {
+                  displayBox.textContent += keyContent.toUpperCase(); // Capitalize letters if Caps Lock is enabled
+                } else {
+                  displayBox.textContent += keyContent.toLowerCase();
+                }
+                break;
+              case 'spacebar':
+                displayBox.textContent += ' '; // Add a space character
+                break;
+
+            }
+          });
+        });
+      });
+      document.addEventListener('DOMContentLoaded', function() {
+    const displayBox = document.getElementById('display-box');
+
+    // Object to track the state of modifier keys (Caps Lock, Shift)
+    const modifiers = {
+        capsLock: false,
+        shift: false
+    };
+
+    // Event listener for keydown event
+    document.addEventListener('keydown', function(event) {
+        const key = event.key;
+        const isCapsLock = event.getModifierState('CapsLock');
+        const isShift = event.shiftKey;
+
+        // Update state of modifier keys
+        modifiers.capsLock = isCapsLock;
+        modifiers.shift = isShift;
+
+        // Handle different keys
+        switch (key) {
+            case 'CapsLock':
+            case 'Shift':
+            case 'Backspace':
+                // Do nothing for Caps Lock, Shift, and Backspace keys
+                break;
+            case ' ':
+                // Handle Space key
+                displayBox.textContent += ' ';
+                break;
+            default:
+                // Handle other keys
+                if (modifiers.capsLock || modifiers.shift) {
+                    displayBox.textContent += key.toUpperCase();
+                } else {
+                    displayBox.textContent += key.toLowerCase();
+                }
+                break;
+        }
+    });
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    const displayBox = document.getElementById('display-box');
+    const keys = document.querySelectorAll('.key');
+
+    let currentKey = '';
+    let isRed = false;
+    let timerID = null;
+
+    // Function to generate a random alphabet key
+    function generateRandomKey() {
+        const alphabet = 'abcdefghijklmnopqrstuvwxyz';
+        return alphabet[Math.floor(Math.random() * alphabet.length)];
+    }
+
+    // Function to set random key and start timer
+    function setRandomKey() {
+        currentKey = generateRandomKey();
+        displayBox.textContent = currentKey;
+        isRed = false;
+
+        // Set a timer for the key to turn red after a random interval
+        timerID = setTimeout(() => {
+            displayBox.classList.add('red');
+            isRed = true;
+
+            // Start the timer for one second
+            setTimeout(() => {
+                if (isRed) {
+                    displayBox.classList.remove('red');
+                    alert('Game Over! You were too slow.');
+                    resetGame();
+                }
+            }, 1000);
+        }, Math.random() * 5000 + 1000); // Random interval between 1 to 6 seconds
+    }
+
+    // Function to reset the game
+    function resetGame() {
+        clearTimeout(timerID);
+        setRandomKey();
+    }
+
+    // Event listener for keydown event
+    document.addEventListener('keydown', function(event) {
+        const keyPressed = event.key.toLowerCase();
+        if (isRed && keyPressed === currentKey) {
+            displayBox.classList.remove('red');
+            alert('Correct!');
+            resetGame();
+        }
+    });
+
+    // Start the game
+    setRandomKey();
+});
+
+    </script>
+  </body>
+
+</html>

@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space Shooter Game</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden; /* Hide scrollbars */
+        }
+        canvas {
+            display: block;
+            background-color: black;
+        }
+        #score {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: white;
+            font-size: 20px;
+        }
+        #timer {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: white;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="gameCanvas"></canvas>
+    <div id="score">Score: 0</div>
+    <div id="timer">Time: 0</div>
+    <img id="playerImg" src="./png-transparent-grey-and-red-fighting-jet-illustration-spacecraft-spaceship-file-miscellaneous-airplane-vehicle-removebg-preview.png" style="display: none;">
+    <img id="villainImg" src="./spaceship.pod_.1.green_ (1).png" style="display: none;">
+    <img id="bulletImg" src="./footagecrate-looping-blaster-bol.webp" style="display: none;">
+    <script>
+        const canvas = document.getElementById('gameCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // Set canvas size
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        // Load images
+        const playerImg = document.getElementById('playerImg');
+        const villainImg = document.getElementById('villainImg');
+        const bulletImg = document.getElementById('bulletImg');
+
+        // Player spaceship
+        const player = {
+            x: canvas.width / 2 - 50,
+            y: canvas.height - 200,
+            width: 100,
+            height: 100,
+            speed: 25,
+            fireRate: 500,
+            lastShotTime: 0,
+            health: 3
+        };
+
+        // Villains (enemies)
+        let villains = [];
+
+        // Bullets
+        let bullets = [];
+
+        // Villain Bullets
+        let villainBullets = [];
+
+        // Score
+        let score = 0;
+
+        // Timer
+        let startTime = Date.now();
+        let elapsedTime = 0;
+
+        // Stars
+        const stars = [];
+        const numStars = 100;
+
+        // Difficulty settings
+        let villainSpeed = 2;
+        let villainFrequency = 2000; // milliseconds
+        let bulletSpeed = 12;
+
+        // Generate random stars
+        for (let i = 0; i < numStars; i++) {
+            stars.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                radius: Math.random() * 2
+            });
+        }
+
+        // Functions to draw player, villains, and bullets
+        function drawPlayer() {
+            ctx.drawImage(playerImg, player.x, player.y, player.width, player.height);
+        }
+
+        function drawVillains() {
+            villains.forEach(villain => {
+                ctx.drawImage(villainImg, villain.x, villain.y, villain.width, villain.height);
+            });
+        }
+
+        function drawBullets() {
+            bullets.forEach(bullet => {
+                ctx.drawImage(bulletImg, bullet.x, bullet.y, bullet.width, bullet.height);
+            });
+        }
+
+        function drawVillainBullets() {
+            villainBullets.forEach(bullet => {
+                ctx.drawImage(bulletImg, bullet.x, bullet.y, bullet.width, bullet.height);
+            });
+        }
+
+        // Function to draw stars
+        function drawStars() {
+            ctx.fillStyle = 'white';
+            stars.forEach(star => {
+                ctx.beginPath();
+                ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+                ctx.fill();
+            });
+        }
+
+        // Function to move player
+        function movePlayer(direction) {
+            switch (direction) {
+                case 'left':
+                    if (player.x > 0) {
+                        player.x -= player.speed;
+                    }
+                    break;
+                case 'right':
+                    if (player.x < canvas.width - player.width) {
+                        player.x += player.speed;
+                    }
+                    break;
+                case 'up':
+                    if (player.y > 0) {
+                        player.y -= player.speed;
+                    }
+                    break;
+                case 'down':
+                    if (player.y < canvas.height - player.height) {
+                        player.y += player.speed;
+                    }
+                    break;
+            }
+        }
+
+        // Function to shoot bullets
+        function shoot() {
+            const currentTime = Date.now();
+            if (currentTime - player.lastShotTime > player.fireRate) {
+                const bulletWidth = 30; // Increased width
+                const bulletHeight = 60; // Increased height
+                const bulletSpacing = 20; // Space between bullets
+                const bulletOffset = (player.width / 2) - (bulletWidth / 2) - (bulletSpacing * 1.5); // Calculate offset
+                for (let i = 0; i < 4; i++) {
+                    const bulletX = player.x + bulletOffset + (bulletSpacing * i);
+                    const bulletY = player.y - bulletHeight;
+                    bullets.push({ x: bulletX, y: bulletY, width: bulletWidth, height: bulletHeight });
+                }
+                player.lastShotTime = currentTime;
+            }
+        }
+
+        // Function to auto shoot bullets from player
+        function autoShoot() {
+            const bulletWidth = 30; // Increased width
+            const bulletHeight = 60; // Increased height
+            const bulletX = player.x + (player.width / 2) - (bulletWidth / 2);
+            const bulletY = player.y - bulletHeight;
+            bullets.push({ x: bulletX, y: bulletY, width: bulletWidth, height: bulletHeight });
+        }
+
+        // Function to shoot bullets from villains
+        function villainShoot() {
+            villains.forEach(villain => {
+                const bulletWidth = 30; // Increased width
+                const bulletHeight = 60; // Increased height
+                const bulletX = villain.x + (villain.width / 2) - (bulletWidth / 2);
+                const bulletY = villain.y + villain.height;
+                villainBullets.push({ x: bulletX, y: bulletY, width: bulletWidth, height: bulletHeight });
+            });
+        }
+
+        // Function to move bullets
+        function moveBullets() {
+            bullets.forEach(bullet => {
+                bullet.y -= bulletSpeed;
+            });
+            villainBullets.forEach(bullet => {
+                bullet.y += bulletSpeed;
+            });
+        }
+
+        // Function to create new villain
+        function createVillain() {
+            const villainWidth = 100;
+            const villainHeight = 100;
+            const villainX = Math.random() * (canvas.width - villainWidth);
+            const villainY = -villainHeight; // Start villains from top
+            villains.push({ x: villainX, y: villainY, width: villainWidth, height: villainHeight });
+        }
+
+        // Function to move villains
+        function moveVillains() {
+            villains.forEach(villain => {
+                villain.y += villainSpeed;
+
+                // Attack player if within range
+                if (villain.y < player.y + player.height && villain.y + villain.height > player.y &&
+                    villain.x < player.x + player.width && villain.x + villain.width > player.x) {
+                    // Move towards player
+                    if (villain.x < player.x) {
+                        villain.x += 1; // Move right
+                    } else {
+                        villain.x -= 1; // Move left
+                    }
+
+                    // Collision with player
+                    player.health--;
+                    if (player.health <= 0) {
+                        alert('Game Over! You Lose!');
+                        document.location.reload();
+                    }
+                }
+            });
+        }
+
+        // Function to handle collisions between bullets and villains
+        function handleBulletVillainCollisions() {
+            bullets.forEach((bullet, bulletIndex) => {
+                villains.forEach((villain, villainIndex) => {
+                    if (bullet.x < villain.x + villain.width &&
+                        bullet.x + bullet.width > villain.x &&
+                        bullet.y < villain.y + villain.height &&
+                        bullet.y + bullet.height > villain.y) {
+                        // Collision detected
+                        bullets.splice(bulletIndex, 1);
+                        villains.splice(villainIndex, 1);
+                        score += 10; // Increase score
+                        updateScore(); // Update score on the screen
+                    }
+                });
+            });
+        }
+
+        // Function to handle collisions between player and villain bullets
+        function handlePlayerVillainBulletCollisions() {
+            villainBullets.forEach((bullet, bulletIndex) => {
+                if (bullet.x < player.x + player.width &&
+                    bullet.x + bullet.width > player.x &&
+                    bullet.y < player.y + player.height &&
+                    bullet.y + bullet.height > player.y) {
+                    // Collision detected
+                    villainBullets.splice(bulletIndex, 1);
+                    player.health--;
+                    if (player.health <= 0) {
+                        alert('Game Over! You Lose!');
+                        document.location.reload();
+                    }
+                }
+            });
+        }
+
+        // Function to update score on the screen
+        function updateScore() {
+            document.getElementById('score').innerText = 'Score: ' + score;
+        }
+
+        // Function to update timer on the screen
+        function updateTimer() {
+            elapsedTime = Math.floor((Date.now() - startTime) / 1000);
+            document.getElementById('timer').innerText = 'Time: ' + elapsedTime + 's';
+        }
+
+        // Game loop
+        function gameLoop() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas
+
+            drawStars();
+            moveBullets();
+            moveVillains();
+            handleBulletVillainCollisions();
+            handlePlayerVillainBulletCollisions();
+            drawPlayer();
+            drawVillains();
+            drawBullets();
+            drawVillainBullets();
+            updateTimer();
+
+            requestAnimationFrame(gameLoop); // Keep the game running
+        }
+
+        // Start the game loop
+        gameLoop();
+
+        // Event listener for player movement and shooting
+        window.addEventListener('keydown', (event) => {
+            if (event.key === 'ArrowLeft') {
+                movePlayer('left');
+            } else if (event.key === 'ArrowRight') {
+                movePlayer('right');
+            } else if (event.key === 'ArrowUp') {
+                movePlayer('up');
+            } else if (event.key === 'ArrowDown') {
+                movePlayer('down');
+            } else if (event.key === ' ') {
+                shoot();
+            }
+        });
+
+        // Create new villains and increase difficulty at regular intervals
+        let difficultyInterval = setInterval(() => {
+            villainSpeed += 0.5;
+            villainFrequency -= 100;
+            bulletSpeed += 1;
+            clearInterval(difficultyInterval);
+        }, 10000); // Increase difficulty every 10 seconds
+
+        // Set intervals for creating villains and shooting
+        setInterval(createVillain, villainFrequency); // Adjust the interval as needed
+        setInterval(autoShoot, 1000); // Adjust the interval as needed
+        setInterval(villainShoot, 2000); // Adjust the interval as needed
+    </script>
+</body>
+</html>

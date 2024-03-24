@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hero Car Game</title>
+<style>
+    body {
+        margin: 0;
+        overflow: hidden;
+        font-family: Arial, sans-serif;
+    }
+
+    #game-container {
+        width: 100vw;
+        height: 100vh;
+        background-color: #000;
+        position: relative;
+        background-image: url("./images/road\ \(1\).jpg"); /* Add your road background image here */
+        background-size: cover;
+        background-position: center;
+    }
+
+    #hero-car {
+        width: 50px;
+        height: 100px;
+        background-color: red;
+        position: absolute;
+        bottom: 10%;
+        left: 50%;
+        transform: translateX(-50%);
+        transition: transform 0.2s ease;
+    }
+
+    .enemy-car {
+        width: 50px;
+        height: 100px;
+        background-color: blue;
+        position: absolute;
+        bottom: 100%;
+        transform: translateX(-50%);
+        animation: enemyMove 2s linear infinite;
+    }
+
+    @keyframes enemyMove {
+        0% {
+            transform: translateY(0%);
+        }
+        100% {
+            transform: translateY(100vh);
+        }
+    }
+</style>
+</head>
+<body>
+<div id="game-container">
+    <div id="hero-car"></div>
+</div>
+
+<script>
+    const heroCar = document.getElementById('hero-car');
+    const gameContainer = document.getElementById('game-container');
+    const heroCarWidth = heroCar.offsetWidth;
+    const gameAreaWidth = gameContainer.offsetWidth;
+    let heroCarPosition = (gameAreaWidth - heroCarWidth) / 2;
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'ArrowLeft') {
+            heroCarPosition -= 20;
+            if (heroCarPosition < 0) heroCarPosition = 0;
+        } else if (event.key === 'ArrowRight') {
+            heroCarPosition += 20;
+            if (heroCarPosition > gameAreaWidth - heroCarWidth) heroCarPosition = gameAreaWidth - heroCarWidth;
+        }
+        heroCar.style.left = heroCarPosition + 'px';
+    });
+
+    function createEnemyCar() {
+        const enemyCar = document.createElement('div');
+        enemyCar.classList.add('enemy-car');
+        enemyCar.style.left = Math.random() * (gameAreaWidth - 50) + 'px';
+        gameContainer.appendChild(enemyCar);
+
+        setTimeout(() => {
+            enemyCar.remove();
+        }, 3000);
+    }
+
+    setInterval(createEnemyCar, 2000);
+</script>
+</body>
+</html>

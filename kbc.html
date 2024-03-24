@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        .main-container {
+            height: 100%;
+            width: 100%;
+            padding: 10px;
+            margin: 10px;
+        }
+        .start-button {
+         
+            border-radius: 50px;
+            background-color: #32245c;
+            font-size: 70px;
+            color: rgb(8, 7, 7);
+            margin-left: 300.10px;
+            margin-top: 350px;
+            width: 900px;
+            height: 100px;
+        }
+
+        .display {
+            width: 90%;
+            height: 250px;
+            background-color: #32245c;
+            margin-left: 5%;
+            border-radius: 50px;
+            margin-top: 100px; 
+            border-style: solid;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 25px;
+            color: white;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        .text-display {
+            font-size: 80px;
+            font-weight: 900;
+            color: white;
+
+        }
+
+        .button {
+            height: 100px;
+            width: 500px;
+            border-radius: 350px;
+            margin: 10px;
+            margin-left: 12%;
+            margin-top: 40px;
+            background-color: #32245c;
+            font-size: 25px;
+            color: white;
+            font-weight: bold;
+            
+
+
+        }
+    </style>
+    <script>
+        let questionNumber = 0;
+        function questionOne() {
+            document.getElementById("text-display").innerHTML = "1.Which cricketer have most ODI centuries?";
+            document.getElementById("answer-one").innerHTML = "a.Virat Kohli";
+            document.getElementById("answer-two").innerHTML = "b.Rohit Sharma";
+            document.getElementById("answer-three").innerHTML = "c.Devid Warner";
+            document.getElementById("answer-four").innerHTML = "d.Kane Whillamsons";
+        }
+        function questionTwo() {
+            document.getElementById("text-display").innerHTML = "2.Who was the winner of WC 2023?";
+            document.getElementById("answer-one").innerHTML = "a.India";
+            document.getElementById("answer-two").innerHTML = "b.Austrilia";
+            document.getElementById("answer-three").innerHTML = "c.South Africa";
+            document.getElementById("answer-four").innerHTML = "d.New Zeland";
+        }
+        function questionThree() {
+            document.getElementById("text-display").innerHTML = "3. What is full form of BCCI?";
+            document.getElementById("answer-one").innerHTML = "a.Board of control for cricket in Ireland";
+            document.getElementById("answer-two").innerHTML = "b.Board of control for cricket in Island";
+            document.getElementById("answer-three").innerHTML = "c.Board of control for cricket in India";
+            document.getElementById("answer-four").innerHTML = "d.Board of control for cricket in Isriel";
+        }
+        function questionFour() {
+            document.getElementById("text-display").innerHTML = "4.Yashashwi jaswal has played his frist test match angainst.";
+            document.getElementById("answer-one").innerHTML = "a.South Africa";
+            document.getElementById("answer-two").innerHTML = "b. Pakistan";
+            document.getElementById("answer-three").innerHTML = "c.Australia";
+            document.getElementById("answer-four").innerHTML = " d.West Indies";
+        }
+        function questionFive() {
+            document.getElementById("text-display").innerHTML = "5.In whos captain india won his first WC trophy?";
+            document.getElementById("answer-one").innerHTML = "a.kapil Dev";
+            document.getElementById("answer-two").innerHTML = "b.Sunil Gawaskar";
+            document.getElementById("answer-three").innerHTML = "c.Bishen Singh Bedi";
+            document.getElementById("answer-four").innerHTML = " d.Yajurvindra Singh";
+        }
+        function questionSix() {
+            document.getElementById("text-display").innerHTML = "6.Which IPL team is most popular and dengerous?";
+            document.getElementById("answer-one").innerHTML = "a.Mumbai Indians";
+            document.getElementById("answer-two").innerHTML = "b.Royal Chalengers Banglore";
+            document.getElementById("answer-three").innerHTML = "c. Chenai Super Kings";
+            document.getElementById("answer-four").innerHTML = " d.Sunrisers Haidrabaad";
+        }
+        function questionSeven() {
+            document.getElementById("text-display").innerHTML = "7. Which of the following is first Cricketer to score a double century in test cricket?";
+            document.getElementById("answer-one").innerHTML = "a.Amar Singh";
+            document.getElementById("answer-two").innerHTML = "b.Lala Amarnath";
+            document.getElementById("answer-three").innerHTML = "c. Polly Umrigar";
+            document.getElementById("answer-four").innerHTML = " d.Chetan Sharma";
+        }
+        function questionEight() {
+            document.getElementById("text-display").innerHTML = "8. Which of the following is first Cricketer to score a triple century in test cricket?";
+            document.getElementById("answer-one").innerHTML = "a. Polly Umriga";
+            document.getElementById("answer-two").innerHTML = "b.Kapil Dev";
+            document.getElementById("answer-three").innerHTML = "c. Lala Amarnath";
+            document.getElementById("answer-four").innerHTML = " d.Virendra Sehwag";
+        }
+        function questionNine() {
+            document.getElementById("text-display").innerHTML = "9.Which of the following is first Indian to score double century in ODI?";
+            document.getElementById("answer-one").innerHTML = "a.Sachin Tendulkar";
+            document.getElementById("answer-two").innerHTML = "b.Mahendra Singh Dhoni";
+            document.getElementById("answer-three").innerHTML = "c. Ravindra Jadeja ";
+            document.getElementById("answer-four").innerHTML = " d.Rohit Sharma";
+        }
+        function questionTen() {
+            document.getElementById("text-display").innerHTML = "10.Which of the following is first Indian bowler to record hat-trick in ODI Match?";
+            document.getElementById("answer-one").innerHTML = "a.Chetan Sharma";
+            document.getElementById("answer-two").innerHTML = "b.Kapil Dev";
+            document.getElementById("answer-three").innerHTML = "c.Bapu Nadkarn ";
+            document.getElementById("answer-four").innerHTML = " d.Harbhajan Singh";
+        }
+        function questionEleven() {
+            document.getElementById("text-display").innerHTML = "11.India Won first cricket world cup championship in year _________.";
+            document.getElementById("answer-one").innerHTML = "a.2011";
+            document.getElementById("answer-two").innerHTML = "b.1983";
+            document.getElementById("answer-three").innerHTML = "c.1987 ";
+            document.getElementById("answer-four").innerHTML = " d.1987";
+        }
+        function questionTwelve() {
+            document.getElementById("text-display").innerHTML = "12. Which of the following is first Indian Batsman to complete 10,000 runs in Test Cricket?";
+            document.getElementById("answer-one").innerHTML = "a. Ravi Shastri";
+            document.getElementById("answer-two").innerHTML = "b.Sunil Gavaskar";
+            document.getElementById("answer-three").innerHTML = "c.Ajit Wadekar ";
+            document.getElementById("answer-four").innerHTML = " d.Sachin Tendulkar";
+        }
+        function questionThirteen() {
+            document.getElementById("text-display").innerHTML = "13.Who is first Indian Cricketer to score 100 centuries in Tests and ODIs combined?";
+            document.getElementById("answer-one").innerHTML = "a. Sunil Gawaskar";
+            document.getElementById("answer-two").innerHTML = "b.Ricky Ponting";
+            document.getElementById("answer-three").innerHTML = "c. Sachin Tendulkar";
+            document.getElementById("answer-four").innerHTML = " d. None of these";
+        }
+        function questionFourteen() {
+            document.getElementById("text-display").innerHTML = "14.Who is first Indian cricketer to score 4000 runs and take 400 wickets?";
+            document.getElementById("answer-one").innerHTML = "a.Anil Kumble";
+            document.getElementById("answer-two").innerHTML = "b.Chetan Sharma";
+            document.getElementById("answer-three").innerHTML = "c.Kapil Dev ";
+            document.getElementById("answer-four").innerHTML = " d.Harbhajan Singh";
+        }
+        function questionFifteen() {
+            document.getElementById("text-display").innerHTML = "15. Who is first Indian to take 200+ catches in Test cricket?";
+            document.getElementById("answer-one").innerHTML = "a.Ajit Agarkar";
+            document.getElementById("answer-two").innerHTML = "b.Mahendra Singh Dhoni.";
+            document.getElementById("answer-three").innerHTML = "c. Yuvraj Singh ";
+            document.getElementById("answer-four").innerHTML = " d.Rahul Dravid";
+        }
+
+
+        // question
+        function question(question) {
+            if (question == 1) {
+                questionNumber = 1;
+                questionOne();
+            } else if (question == 2) {
+                questionNumber = 2;
+                questionTwo();
+            } else if (question == 3) {
+                questionNumber = 3;
+                questionThree();
+            } else if (question == 4) {
+                questionNumber = 4;
+                questionFour();
+            } else if (question == 5) {
+                questionNumber = 5;
+                questionFive();
+            } else if (question == 6) {
+                questionNumber = 6;
+                questionSix();
+            } else if (question == 7) {
+                questionNumber = 7;
+                questionSeven();
+            } else if (question == 8) {
+                questionNumber = 8;
+                questionEight();
+            } else if (question == 9) {
+                questionNumber = 9;
+                questionNine();
+            } else if (question == 10) {
+                questionNumber = 10;
+                questionTen();
+            } else if (question == 11) {
+                questionNumber = 11;
+                questionEleven();
+            } else if (question == 12) {
+                questionNumber = 12;
+                questionTwelve();
+            } else if (question == 13) {
+                questionNumber = 13;
+                questionThirteen();
+            } else if (question == 14) {
+                questionNumber = 14;
+                questionFourteen();
+            } else if (question == 15) {
+                questionNumber = 15;
+                questionFifteen();
+            }
+
+            else {
+                document.getElementById("text-display").innerHTML =
+                    "MUBARAKHO AAP JIT CHUKE HAI PURE 7 CRORE RUPEES...";
+            }
+        }
+        // 
+
+        // answer
+        function answer(givenAnswer) {
+            if (questionNumber == 1) {
+                if (givenAnswer == 1) {
+                    answerOne(true, 2);
+                } else {
+                    answerOne(false, 0);
+                }
+            } else if (questionNumber == 2) {
+                if (givenAnswer == 2) {
+                    answerOne(true, 3);
+                } else {
+                    answerOne(false, 0);
+                }
+            } else if (questionNumber == 3) {
+                if (givenAnswer == 3) {
+                    answerOne(true, 4);
+                } else {
+                    answerOne(false, 0);
+                }
+            } else if (questionNumber == 4) {
+                if (givenAnswer == 4) {
+                    answerOne(true, 5);
+                } else {
+                    answerOne(false, 0);
+                }
+            } else if (questionNumber == 5) {
+                if (givenAnswer == 1) {
+                    answerOne(true, 6);
+                } else {
+                    answerOne(false, 0);
+                }
+            } else if (questionNumber == 6) {
+                if (givenAnswer == 2) {
+                    answerOne(true, 7);
+                } else {
+                    answerOne(false, 0);
+                }
+            } else if (questionNumber == 7) {
+                if (givenAnswer == 3) {
+                    answerOne(true, 8);
+                } else {
+                    answerOne(false, 0);
+                }
+            } else if (questionNumber == 8) {
+                if (givenAnswer == 4) {
+                    answerOne(true, 9);
+                } else {
+                    answerOne(false, 0);
+                }
+            } else if (questionNumber == 9) {
+                if (givenAnswer == 1) {
+                    answerOne(true, 10);
+                } else {
+                    answerOne(false, 0);
+                }
+            } else if (questionNumber == 10) {
+                if (givenAnswer == 1) {
+                    answerOne(true, 11);
+                } else {
+                    answerOne(false, 0);
+                }
+            } else if (questionNumber == 11) {
+                if (givenAnswer == 2) {
+                    answerOne(true, 12);
+                } else {
+                    answerOne(false, 0);
+                }
+            } else if (questionNumber == 12) {
+                if (givenAnswer == 2) {
+                    answerOne(true, 13);
+                } else {
+                    answerOne(false, 0);
+                }
+            } else if (questionNumber == 13) {
+                if (givenAnswer == 3) {
+                    answerOne(true, 14);
+                } else {
+                    answerOne(false, 0);
+                }
+            } else if (questionNumber == 14) {
+                if (givenAnswer == 3) {
+                    answerOne(true, 15);
+                } else {
+                    answerOne(false, 0);
+                }
+            } else if (questionNumber == 15) {
+                if (givenAnswer == 4) {
+                    answerOne(true,);
+                } else {
+                    answerOne(false, 0);
+                }
+            }
+        }
+        // 
+        function answerOne(correctAnswer, nextQuestion) {
+            if (correctAnswer) {
+                document.getElementById("text-display").innerHTML =
+                    "Bilkul sahi jawab";
+                document.getElementById("container").style.backgroundColor =
+                    "#004225";
+                setTimeout(() => {
+                    question(nextQuestion);
+                }, 3000);
+            } else {
+                document.getElementById("text-display").innerHTML =
+                    "गलत जवाब.";
+                document.getElementById("container").style.backgroundColor =
+                    "#FF0000";
+                setTimeout(() => {
+                    startScreen();
+                }, 2000);
+            }
+        }
+        // 
+        function dostart() {
+            document.getElementById("main-body").hidden = false;
+            document.getElementById("play-button").hidden = true;
+            question(1);
+        }
+
+        function startScreen() {
+            document.getElementById("main-body").hidden = true;
+            document.getElementById("play-button").hidden = false;
+
+        }
+
+        // 
+    </script>
+</head>
+
+<body
+    style="background-image: url(https://i.cdn.newsbytesapp.com/images/l158_8201601297368.jpg); height: 100%; width: 100vw; background-repeat: no-repeat;background-position: center;box-sizing: border-box;background-size: cover;background-attachment: fixed;">
+    <!-- start button -->
+    <button class="start-button" id="play-button" onclick="dostart()">PLAY</button>
+    <!-- display -->
+    <div class="main-container" id="main-body" hidden="true">
+        <div class="display" id="container">
+            <h1 id="text-display" class="text-display"></h1>
+        </div>
+        <!-- buttons -->
+        <button class="button" id="answer-one" onclick="answer(1)"></button>
+        <button class="button" id="answer-two" onclick="answer(2)"></button>
+        <button class="button" id="answer-three" onclick="answer(3)"></button>
+        <button class="button" id="answer-four" onclick="answer(4)"></button>
+    </div>
+    </div>
+</body>
+
+</html>

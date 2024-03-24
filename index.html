@@ -1,0 +1,192 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My HTML Projects</title>
+    <style>
+        @keyframes changeColor {
+            0% { color: rgb(255, 0, 0); }
+            50% { color: rgb(0, 255, 0); }
+            100% { color: rgb(0, 0, 255); }
+        }
+
+        @keyframes glow {
+            0% { text-shadow: 0 0 10px rgba(255,255,255,0.7); }
+            50% { text-shadow: 0 0 20px rgba(255,255,255,0.9), 0 0 30px rgba(255,255,255,0.9), 0 0 40px rgba(255,255,255,0.9); }
+            100% { text-shadow: 0 0 10px rgba(255,255,255,0.7); }
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #e4e4e4;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 48px;
+            margin-top: 20px;
+            animation: changeColor 5s infinite alternate, glow 2s infinite alternate;
+        }
+
+        main {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .project {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+            overflow: hidden;
+            transition: box-shadow 0.3s ease;
+            width: 300px;
+            position: relative;
+        }
+
+        .project:hover {
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .project img {
+            display: block;
+            width: 100%;
+            height: 80%;
+            transition: transform 0.3s ease;
+        }
+
+        .project:hover img {
+            transform: scale(1.1);
+        }
+
+        .project-description {
+            padding: 20px;
+            text-align: center;
+        }
+
+        p {
+            margin: 0;
+            font-size: 18px;
+            color: #333;
+        }
+
+        @media screen and (max-width: 768px) {
+            .project {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>My Projects</h1>
+
+    <main>
+        <div class="project">
+           <a href="./calculator.html"><img src="./images/calculator.webp" alt="Calculator Project"></a>
+            <div class="project-description">
+                <p>Calculator Project</p>
+            </div>
+        </div>
+        <div class="project">
+            <a href="./chess.html"><img src="./images/chess.png" alt="Chess Project"></a>
+            <div class="project-description">
+                <p>Chess Project</p>
+            </div>
+        </div>
+        <div class="project">
+            <a href="./info.html"><img src="./images/download.jpeg" alt="Download Project"></a>
+            <div class="project-description">
+                <p>Download Project</p>
+            </div>
+        </div>
+        <div class="project">
+           <a href="./resume.html"><img src="./images/cv.png" alt="Resume Project"></a>
+            <div class="project-description">
+                <p>Resume Project</p>
+            </div>
+        </div>
+        <div class="project">
+            <a href="./kbc.html"><img src="./images/kbcimg.jpg" alt="KBC Project"></a>
+            <div class="project-description">
+                <p>KBC Project</p>
+            </div>
+        </div>
+        <div class="project">
+          <a href="./music.html"><img src="./images/music.webp" alt="Music Project"></a>
+            <div class="project-description">
+                <p>Music Project</p>
+            </div>
+        </div>
+        <div class="project">
+           <a href="./netflix.html"><img src="./images/netflix.jpg" alt="Netflix Project"></a> 
+            <div class="project-description">
+                <p>Netflix Project</p>
+            </div>
+        </div>
+        <div class="project">
+           <a href="./virat.html"><img src="./images/youtube-logo-featured.avif" alt="YouTube Project"></a> 
+            <div class="project-description">
+                <p>YouTube Project</p>
+            </div>
+        </div>
+        <div class="project">
+            <a href="./game.html"><img src="./images/unnamed.png" alt="Game Project"></a> 
+             <div class="project-description">
+                 <p>Game Project</p>
+             </div>
+         </div>
+         <div class="project">
+            <a href="./nigOrPos.html"><img src="https://www.sourcecodester.com/sites/default/files/images/rems/bs2.png" alt="Game Project"></a> 
+             <div class="project-description">
+                 <p>Number Checker Project</p>
+             </div>
+         </div>
+         <div class="project">
+            <a href="./checkWovels.html"><img src="https://i.ytimg.com/vi/gEOKkr7IUoY/maxresdefault.jpg" alt="Game Project"></a> 
+             <div class="project-description">
+                 <p>Check Your Wovels Project</p>
+             </div>
+         </div>
+         <div class="project">
+            <a href="./weekDays.html"><img src="https://foolishdeveloper.com/wp-content/uploads/2022/04/Get-Day-Name-of-the-Week-in-JavaScript.jpg" alt="Game Project"></a> 
+             <div class="project-description">
+                 <p>Week Days Project</p>
+             </div>
+         </div>
+         <div class="project">
+            <a href="./greaterNo.html"><img src="https://media.geeksforgeeks.org/wp-content/uploads/20230921160000/Greater-than-less-than-2-(1).png" alt="Game Project"></a> 
+             <div class="project-description">
+                 <p>Greater Than Number Checker Project</p>
+             </div>
+         </div>
+         <div class="project">
+            <a href="./busTicket.html"><img src="https://t3.ftcdn.net/jpg/01/25/79/16/360_F_125791665_vSWZPT6PEHOXhVT5VucOdvb5g8w7lcTX.jpg" alt="Game Project"></a> 
+             <div class="project-description">
+                 <p>Book Your Bus Ticket Project</p>
+             </div>
+         </div>
+         <div class="project">
+            <a href="./billboard.html"><img src="https://i.ytimg.com/vi/nxFB9HHpFEQ/maxresdefault.jpg?sqp=-oaymwEmCIAKENAF8quKqQMa8AEB-AH-CYAC0AWKAgwIABABGH8gOCg9MA8=&rs=AOn4CLA0TZY6yWs-kgkoLiAIBMNn5pPwJQ" alt="Game Project"></a> 
+             <div class="project-description">
+                 <p>Electricity Bill Project</p>
+             </div>
+         </div>
+         <div class="project">
+            <a href="./keyBoard.html"><img src="https://media.istockphoto.com/id/942286504/vector/desktop-computer-icon-vector-isolated.jpg?s=612x612&w=0&k=20&c=mFeaYPwZqKHWLSC1RBphDwHDUi_P6lJ0O2YPe935vcg=" alt="Game Project"></a> 
+             <div class="project-description">
+                 <p>Virtual eyBoard Project</p>
+             </div>
+         </div>
+    </main>
+</body>
+
+</html>

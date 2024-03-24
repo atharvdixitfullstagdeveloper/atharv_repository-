@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vowel Checker</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 50px auto;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      margin-top: 250px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      margin-bottom: 20px;
+    }
+
+    #result {
+      text-align: center;
+      font-size: 18px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Vowel Checker</h1>
+    <label for="alphabet">Enter an alphabet:</label>
+    <input type="text" id="alphabet" maxlength="1" oninput="checkVowel()">
+    <div id="result"></div>
+  </div>
+
+  <script>
+    function checkVowel() {
+      var alphabet = document.getElementById('alphabet').value.toLowerCase();
+      var vowels = ['a', 'e', 'i', 'o', 'u'];
+      var resultDiv = document.getElementById('result');
+
+      if (alphabet.length === 1 && /^[a-zA-Z]+$/.test(alphabet)) {
+        if (vowels.includes(alphabet)) {
+          resultDiv.textContent = alphabet.toUpperCase() + " is a vowel.";
+        } else {
+          resultDiv.textContent = alphabet.toUpperCase() + " is not a vowel.";
+        }
+      } else {
+        resultDiv.textContent = "Please enter a single alphabet character.";
+      }
+    }
+  </script>
+</body>
+</html>

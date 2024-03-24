@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* CSS */
+        .main-container {
+            background-color: grey;
+            width: 70vw;
+            margin-left: 20vw;
+            height: 45vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            border-radius: 20px;
+            margin-top: 5px;
+        }
+
+        .input-container {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .display {
+            background-color: whitesmoke;
+            width: 90%;
+            height: 60%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 22px;
+            margin-top: 45px;
+            padding: 20px;
+            margin-left: 30px;
+        }
+
+        .input-box {
+            height: 44px;
+            width: 80%;
+            font-size: 22px;
+            margin-top: 20px;
+            background-color: rgba(255, 255, 255, 0.701);
+            border: none;
+            border-radius: 20px;
+        }
+
+        .button {
+            width: 80%;
+            margin: 20px;
+            height: 44px;
+            background-color: blue;
+            font-size: 22px;
+            border: none;
+            border-radius: 20px;
+            color: white;
+        }
+    </style>
+    <script>
+        // input
+        function startPlay() {
+            let x = document.getElementById("inputOne").value;
+            let y = document.getElementById("inputTwo").value;
+
+            //   process
+            let z = process ("add", x, y);
+       
+            // output
+           output (z)
+        }
+        // process
+        function process(action, noOne, noTwo) {
+            let result = 0;
+            noOne = Number(noOne)
+            noTwo = Number(noTwo)
+            if (action == "add") {
+                result = noOne + noTwo;
+           
+            }
+            if (action == "sub") {
+                result = noOne - noTwo;
+           
+            }
+            if (action == "div") {
+                result = noOne / noTwo;
+           
+            }
+            if (action == "mul") {
+                result = noOne * noTwo;
+           
+            }
+            console.log("The Result Is", result)
+            return result;
+        }
+        // output
+        function output(a){
+            document.getElementById("display-text").innerHTML = a;
+            console.log("Output", a)
+        }
+        function playMusic() {
+            sa();
+            re();
+        }
+        function sa() {
+            console.log (" SA ")
+        }
+        function re() {
+            console.log (" RE ")
+        }
+        function gg() {
+            console.log (" GG ")
+        }
+        function mm() {
+            console.log (" MM ")
+        }
+        function pp() {
+            console.log (" PP ")
+        }
+        function dha() {
+            console.log (" DHA ")
+        }
+        function ni() {
+            console.log (" NI ")
+        }
+        
+        // function daysRemaining() {
+        //     // input
+        //     let x = prompt("ENTER YOUR AGE")
+        //     //  process
+        //     let y = Number(x)
+        //     // daysremaining
+        //     let z = 100 - y;
+        //     // mul by days 
+        //     let days = z * 365
+        //     // output
+        //     document. getElementById("display").innerHTML= days + "DAYS REMAINING";
+        // }
+let z = 100;
+function daysRemaining() {
+    // input
+let x = 123;
+let y = x.toString();
+// output
+console.log("PRINT")
+}
+    </script>
+</head>
+
+<body style="background-color: white; margin: 0px;">
+    <div class="main-container">
+        <div class="display" id="display">
+            <h1 class="display-text" id="display-text"></h1>
+            <div class="loader" id="loader"></div>
+        </div>
+        <div class="input-container">
+            <input id="inputOne" type="number" class="input-box" placeholder="Bet number">
+            <input id="inputTwo" type="number" class="input-box" placeholder="Coins">
+            <button class="button" onclick="daysRemaining()">Click me</button>
+        </div>
+    </div>
+
+    <script src="your-script.js"></script>
+</body>
+
+</html>

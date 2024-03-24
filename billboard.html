@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unit Price Calculator</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+  }
+  .container {
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    margin-top: 200px;
+  }
+  input[type="number"] {
+    width: 100px;
+    padding: 8px;
+    margin: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #080080;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  #bill {
+    display: none;
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Unit Price Calculator</h2>
+  <form id="unitForm">
+    <label for="units">Enter Units:</label>
+    <input type="number" id="units" name="units" min="1" required>
+    <input type="submit" value="Calculate">
+  </form>
+  <div id="bill"></div>
+</div>
+
+<script>
+document.getElementById('unitForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+  var units = parseFloat(document.getElementById('units').value);
+  var unitPrice = 20; // Change this to your unit price in Indian Rupees
+  var totalPrice = units * unitPrice;
+  showBill(units, unitPrice, totalPrice);
+});
+
+function showBill(units, unitPrice, totalPrice) {
+  var billDiv = document.getElementById('bill');
+  billDiv.innerHTML = `
+    <h3>Bill Details</h3>
+    <p>Units Purchased: ${units}</p>
+    <p>Unit Price: ₹${unitPrice.toFixed(2)}</p>
+    <p>Total Price: ₹${totalPrice.toFixed(2)}</p>
+  `;
+  billDiv.style.display = 'block';
+}
+</script>
+
+</body>
+</html>
